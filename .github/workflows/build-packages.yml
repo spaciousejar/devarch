@@ -13,6 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: archlinux:latest
+      options: --privileged
 
     steps:
       - name: Install dependencies
@@ -55,11 +56,21 @@ jobs:
           path: /tmp/repo/
           retention-days: 30
 
-      - name: Deploy to GitHub Pages
+      - name: Configure git
         if: github.ref == 'refs/heads/main'
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: /tmp/repo
-          destination_dir: repo/x86_64
-          keep_files: false
+        run: |
+          git config --global user.name "Devarch CI"
+          git config --global user.email "ci@devarch.local"
+
+      - name: Commit packages to repo/
+        if: github.ref == 'refs/heads/main'
+        run: |
+          mkdir -p repo/x86_64
+          cp -r /tmp/repo/* repo/x86_64/
+          git add repo/
+          if git diff --cached --quiet; then
+            echo "No package changes to commit"
+          else
+            git commit -m "Update packages [skip ci]"
+            git push origin main
+          fi
