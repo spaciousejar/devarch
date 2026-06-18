@@ -21,6 +21,7 @@ alias df='duf'
 alias vim='nvim'
 alias vi='nvim'
 alias please='sudo $(fc -ln -1)'
+alias devinstall='archinstall'
 alias devarch-update='sudo pacman -Syu && yay -Syu --devel --timeupgrade'
 alias ls='eza --icons --group-directories-first'
 
