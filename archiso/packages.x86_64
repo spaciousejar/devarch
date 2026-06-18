@@ -44,7 +44,7 @@ rofi-wayland
 dunst
 swaybg
 swaylock
-wlogout
+# wlogout (AUR-only, install post-setup)
 wl-clipboard
 grim
 slurp
