@@ -1,6 +1,7 @@
 # Build artifacts
 out/
 work/
+build/
 *.iso
 *.iso.sig
 

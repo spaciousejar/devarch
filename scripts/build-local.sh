@@ -12,7 +12,7 @@ YELLOW='\033[1;33m'
 NC='\033[0m'
 
 REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-WORK_DIR="/tmp/devarch-work"
+WORK_DIR="${REPO_ROOT}/build/work"
 OUT_DIR="${REPO_ROOT}/out"
 PROFILE_DIR="${REPO_ROOT}/archiso"
 
