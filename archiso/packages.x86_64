@@ -14,6 +14,10 @@ grub
 efibootmgr
 dosfstools
 mtools
+syslinux
+memtest86+
+memtest86+-efi
+edk2-shell
 
 # Networking
 networkmanager
