@@ -36,6 +36,7 @@ jobs:
             pkg_name="$(basename "${pkgdir}")"
             echo "::group::Building ${pkg_name}"
             cp -r "${pkgdir}" "/tmp/build-${pkg_name}"
+            chown -R builder:builder "/tmp/build-${pkg_name}"
             cd "/tmp/build-${pkg_name}"
             sudo -u builder makepkg -s --noconfirm
             cp *.pkg.tar.zst /tmp/repo/ 2>/dev/null || true
