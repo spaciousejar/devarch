@@ -28,7 +28,7 @@ depends=(
     'foot'
     'swaybg'
     'swaylock'
-    'wlogout'
+    # wlogout (AUR-only, install separately)
     'wl-clipboard'
     'grim'
     'slurp'
