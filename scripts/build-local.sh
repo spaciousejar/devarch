@@ -42,8 +42,9 @@ if [[ "${1:-}" == "--clean" ]]; then
     echo -e "${GREEN}✓ Clean complete${NC}"
 fi
 
-# Create output directory
+# Create output and work directories
 mkdir -p "${OUT_DIR}"
+mkdir -p "${WORK_DIR}"
 
 echo -e "${CYAN}Building Devarch ISO...${NC}"
 echo -e "  Profile: ${PROFILE_DIR}"
