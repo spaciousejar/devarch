@@ -77,7 +77,7 @@ git
 github-cli
 lazygit
 neovim
-vscodium-bin
+code
 tmux
 nodejs
 npm
@@ -110,7 +110,6 @@ ltrace
 btop
 htop
 fastfetch
-neofetch
 htop
 bat
 eza
@@ -165,12 +164,11 @@ zsh
 zsh-completions
 zsh-syntax-highlighting
 zsh-autosuggestions
-oh-my-zsh-git
 starship
 
 # Audio
 alsa-utils
-pulseaudio-utils
+pipewire-pulse
 helvum
 
 # Bluetooth
@@ -192,6 +190,6 @@ man-pages
 xdg-utils
 xdg-user-dirs
 papirus-icon-theme
-arc-gtk-theme
+# GTK theme configured via devarch-desktop-settings package
 nwg-look
 lv2
