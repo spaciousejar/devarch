@@ -1,0 +1,65 @@
+name: Build Devarch Packages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'packages/**'
+      - '.github/workflows/build-packages.yml'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: archlinux:latest
+
+    steps:
+      - name: Install dependencies
+        run: |
+          pacman -Syu --noconfirm
+          pacman -S --noconfirm base-devel git sudo pacman-contrib
+
+      - name: Create build user
+        run: |
+          useradd -m builder
+          echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build custom packages
+        run: |
+          mkdir -p /tmp/repo
+          for pkgdir in packages/*/; do
+            pkg_name="$(basename "${pkgdir}")"
+            echo "::group::Building ${pkg_name}"
+            cp -r "${pkgdir}" "/tmp/build-${pkg_name}"
+            cd "/tmp/build-${pkg_name}"
+            sudo -u builder makepkg -s --noconfirm
+            cp *.pkg.tar.zst /tmp/repo/ 2>/dev/null || true
+            cd /github/workspace
+            echo "::endgroup::"
+          done
+
+      - name: Update repository database
+        run: |
+          cd /tmp/repo
+          repo-add devarch.db.tar.gz *.pkg.tar.zst
+          ls -lh
+
+      - name: Upload packages as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: devarch-packages
+          path: /tmp/repo/
+          retention-days: 30
+
+      - name: Deploy to GitHub Pages
+        if: github.ref == 'refs/heads/main'
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: /tmp/repo
+          destination_dir: repo/x86_64
+          keep_files: false

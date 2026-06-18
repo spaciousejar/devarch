@@ -1,0 +1,35 @@
+# Maintainer: Vicky Jadhav <jadhavvicky752@gmail.com>
+# Contributor: Vicky Jadhav <jadhavvicky752@gmail.com>
+
+pkgname=devarch-desktop-settings
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="Devarch desktop default settings, GTK theme, icon theme, and cursor theme"
+arch=('any')
+url="https://github.com/spaciousejar/devarch"
+license=('MIT')
+depends=('papirus-icon-theme' 'arc-gtk-theme' 'nwg-look')
+makedepends=()
+source=()
+sha256sums=()
+
+package() {
+    # GTK settings
+    install -Dm644 ../gtk/settings.ini "${pkgdir}/etc/skel/.config/gtk-3.0/settings.ini"
+    install -Dm644 ../gtk/settings.ini "${pkgdir}/etc/skel/.config/gtk-4.0/settings.ini"
+
+    # Default applications
+    install -Dm644 ../mimeapps.list "${pkgdir}/etc/skel/.config/mimeapps.list"
+
+    # Fontconfig
+    install -Dm644 ../fontconfig/fonts.conf "${pkgdir}/etc/skel/.config/fontconfig/fonts.conf"
+
+    # Environment
+    install -Dm644 ../environment "${pkgdir}/etc/environment"
+
+    # Devarch wallpaper
+    install -Dm644 ../wallpaper.jpg "${pkgdir}/usr/share/backgrounds/devarch/default.jpg"
+
+    # Plymouth theme (if used)
+    install -Dm644 ../plymouth/devarch-logo.png "${pkgdir}/usr/share/pixmaps/devarch.png"
+}

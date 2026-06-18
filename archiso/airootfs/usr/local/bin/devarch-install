@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+# Devarch Installer
+# A minimal post-install script for setting up Devarch on a fresh Arch install
+# In the future, this will be replaced with a Calamares-based installer
+
+set -euo pipefail
+
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+CYAN='\033[0;36m'
+NC='\033[0m' # No Color
+
+echo -e "${CYAN}"
+echo "╔══════════════════════════════════════════╗"
+echo "║        Devarch Linux Installer           ║"
+echo "║  Developer Arch Linux + Hyprland         ║"
+echo "╚══════════════════════════════════════════╝"
+echo -e "${NC}"
+
+# Check if running as root
+if [[ $EUID -ne 0 ]]; then
+    echo -e "${RED}This script must be run as root. Use sudo.${NC}"
+    exit 1
+fi
+
+echo -e "${GREEN}This script will guide you through installing Devarch.${NC}"
+echo ""
+echo "For now, please use archinstall for the base installation."
+echo "After installation, run the following in your new system:"
+echo ""
+echo "  1. sudo pacman -Syu"
+echo "  2. sudo pacman -S --needed - < /usr/share/devarch/packages.x86_64"
+echo "  3. cp -r /etc/skel/. ~/"
+echo "  4. systemctl enable --user hyprland-session"
+echo ""
+echo "A full Calamares installer is planned for future releases."

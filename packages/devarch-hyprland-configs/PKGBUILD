@@ -1,0 +1,42 @@
+# Maintainer: Vicky Jadhav <jadhavvicky752@gmail.com>
+# Contributor: Vicky Jadhav <jadhavvicky752@gmail.com>
+
+pkgname=devarch-hyprland-configs
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="Devarch system-wide Hyprland configuration files, keybinds, and theme settings"
+arch=('any')
+url="https://github.com/spaciousejar/devarch"
+license=('MIT')
+depends=('hyprland' 'waybar' 'rofi-wayland' 'dunst' 'kitty' 'hyprpaper' 'hyprlock' 'hypridle')
+makedepends=()
+source=()
+sha256sums=()
+
+package() {
+    # Hyprland config
+    install -Dm644 ../hyprland.conf "${pkgdir}/etc/skel/.config/hypr/hyprland.conf"
+
+    # Waybar config
+    install -Dm644 ../waybar/config.jsonc "${pkgdir}/etc/skel/.config/waybar/config.jsonc"
+    install -Dm644 ../waybar/style.css "${pkgdir}/etc/skel/.config/waybar/style.css"
+
+    # Rofi config
+    install -Dm644 ../rofi/config.rasi "${pkgdir}/etc/skel/.config/rofi/config.rasi"
+
+    # Dunst config
+    install -Dm644 ../dunst/dunstrc "${pkgdir}/etc/skel/.config/dunst/dunstrc"
+
+    # Kitty config
+    install -Dm644 ../kitty/kitty.conf "${pkgdir}/etc/skel/.config/kitty/kitty.conf"
+
+    # Hyprpaper config
+    install -Dm644 ../hyprpaper/hyprpaper.conf "${pkgdir}/etc/skel/.config/hypr/hyprpaper.conf"
+
+    # Install system-wide default for all users
+    mkdir -p "${pkgdir}/usr/share/devarch"
+    cp -r ../skel "${pkgdir}/usr/share/devarch/hyprland-configs"
+
+    # Provide a script to apply configs
+    install -Dm755 ../apply-configs.sh "${pkgdir}/usr/bin/devarch-apply-configs"
+}

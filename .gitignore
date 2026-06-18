@@ -1,0 +1,19 @@
+# Build artifacts
+out/
+work/
+*.iso
+*.iso.sig
+
+# Package building
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.pkg.tar.gz
+pkg/
+src/
+
+# OS files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~

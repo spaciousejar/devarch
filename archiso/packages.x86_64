@@ -1,0 +1,196 @@
+# Devarch - Developer-focused Arch Linux with Hyprland
+# =====================================================
+# Base system
+base
+base-devel
+linux
+linux-firmware
+linux-headers
+
+# Boot & firmware
+amd-ucode
+intel-ucode
+grub
+efibootmgr
+dosfstools
+mtools
+
+# Networking
+networkmanager
+iwd
+iw
+wireless-regdb
+wpa_supplicant
+dhcpcd
+openssh
+bind
+openconnect
+vpnc
+nfs-utils
+rsync
+
+# Hyprland & Wayland stack
+hyprland
+hyprpaper
+hyprlock
+hypridle
+hyprpicker
+waybar
+rofi-wayland
+dunst
+swaybg
+swaylock
+wlogout
+wl-clipboard
+grim
+slurp
+swappy
+brightnessctl
+pavucontrol
+pipewire
+pipewire-pulse
+pipewire-alsa
+wireplumber
+xdg-desktop-portal-hyprland
+xdg-desktop-portal-gtk
+polkit-kde-agent
+qt5-wayland
+qt6-wayland
+
+# Display & fonts
+kitty
+foot
+ttf-jetbrains-mono-nerd
+ttf-firacode-nerd
+ttf-font-awesome
+noto-fonts
+noto-fonts-cjk
+noto-fonts-emoji
+inter-font
+
+# Development tools
+git
+github-cli
+lazygit
+neovim
+vscodium-bin
+tmux
+nodejs
+npm
+typescript
+python
+python-pip
+python-setuptools
+go
+rustup
+docker
+docker-compose
+podman
+buildah
+jq
+yq
+unzip
+zip
+p7zip
+make
+cmake
+gcc
+clang
+lldb
+llvm
+valgrind
+strace
+ltrace
+
+# System monitoring & utilities
+btop
+htop
+fastfetch
+neofetch
+htop
+bat
+eza
+fd
+ripgrep
+fzf
+zoxide
+tldr
+tree
+ncdu
+duf
+dust
+procs
+bottom
+sysstat
+lm_sensors
+powertop
+
+# File management
+thunar
+thunar-archive-plugin
+thunar-volman
+ranger
+gvfs
+gvfs-mtp
+gvfs-gphoto2
+udiskie
+ntfs-3g
+exfatprogs
+btrfs-progs
+xfsprogs
+f2fs-tools
+dosfstools
+
+# Archiving & compression
+unrar
+xz
+zstd
+lz4
+gzip
+bzip2
+
+# Security
+sudo
+seahorse
+gnupg
+openssl
+ca-certificates
+
+# Shell & terminal enhancements
+zsh
+zsh-completions
+zsh-syntax-highlighting
+zsh-autosuggestions
+oh-my-zsh-git
+starship
+
+# Audio
+alsa-utils
+pulseaudio-utils
+helvum
+
+# Bluetooth
+bluez
+bluez-utils
+blueman
+
+# Printing (optional)
+cups
+hplip
+
+# Browser (for dev testing)
+firefox
+chromium
+
+# Miscellaneous
+man-db
+man-pages
+xdg-utils
+xdg-user-dirs
+papirus-icon-theme
+arc-gtk-theme
+nwg-look
+lv2
+# Devarch custom packages
+devarch-hyprland-configs
+devarch-desktop-settings

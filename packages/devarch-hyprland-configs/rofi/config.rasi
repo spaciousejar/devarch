@@ -1,0 +1,77 @@
+* {
+    font: "JetBrainsMono Nerd Font 12";
+    background: #1a1b26;
+    background-alt: #1f2335;
+    foreground: #c0caf5;
+    selected: #7aa2f7;
+    active: #9ece6a;
+    urgent: #f7768e;
+}
+
+window {
+    transparency: "real";
+    fullscreen: false;
+    width: 600px;
+    border-radius: 10px;
+    border: 2px;
+    border-color: @selected;
+    background-color: @background;
+}
+
+inputbar {
+    background-color: @background-alt;
+    border-radius: 8px;
+    margin: 8px;
+    padding: 8px;
+    children: [entry];
+}
+
+entry {
+    placeholder: "Search...";
+    placeholder-color: #565f89;
+}
+
+listview {
+    lines: 10;
+    columns: 1;
+    cycle: true;
+    dynamic: true;
+    scrollbar: false;
+    spacing: 4px;
+    padding: 8px;
+}
+
+element {
+    padding: 8px 12px;
+    border-radius: 8px;
+}
+
+element normal.normal {
+    background-color: transparent;
+    text-color: @foreground;
+}
+
+element selected.normal {
+    background-color: @selected;
+    text-color: @background;
+}
+
+element-icon {
+    size: 24px;
+    padding: 0 8px 0 0;
+}
+
+element-text {
+    vertical-align: 0.5;
+    horizontal-align: 0.0;
+}
+
+button {
+    background-color: @background-alt;
+    text-color: @foreground;
+}
+
+button selected {
+    background-color: @selected;
+    text-color: @background;
+}

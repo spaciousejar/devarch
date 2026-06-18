@@ -1,0 +1,57 @@
+name: Build Devarch ISO
+
+on:
+  push:
+    tags:
+      - 'v*'
+    branches: [main]
+    paths:
+      - 'archiso/**'
+      - '.github/workflows/build-iso.yml'
+  workflow_dispatch:
+
+env:
+  ISO_NAME: devarch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: archlinux:latest
+
+    steps:
+      - name: Install dependencies
+        run: |
+          pacman -Syu --noconfirm
+          pacman -S --noconfirm archiso git sudo base-devel squashfs-tools erofs-utils
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build ISO
+        run: |
+          mkdir -p /tmp/work /tmp/out
+          mkarchiso -v -w /tmp/work -o /tmp/out ./archiso
+          echo "ISO_FILE=$(ls /tmp/out/*.iso)" >> $GITHUB_ENV
+
+      - name: Upload ISO as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: devarch-iso
+          path: /tmp/out/*.iso
+          retention-days: 30
+
+      - name: Create Release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v1
+        with:
+          files: /tmp/out/*.iso
+          name: Devarch ${{ github.ref_name }}
+          body: |
+            ## Devarch ${{ github.ref_name }}
+
+            A developer-focused Arch Linux distribution with Hyprland.
+
+            ### Checksums
+            $(cd /tmp/out && sha256sum *.iso > checksums.txt && cat checksums.txt)
+          generate_release_notes: true
