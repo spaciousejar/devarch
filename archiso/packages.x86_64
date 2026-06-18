@@ -3,6 +3,7 @@
 # Base system
 base
 base-devel
+mkinitcpio-archiso
 linux
 linux-firmware
 linux-headers
