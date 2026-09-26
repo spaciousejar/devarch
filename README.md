@@ -1,6 +1,14 @@
 # Devarch
 
+[![README Claims](https://github.com/spaciousejar/devarch/actions/workflows/readme-claims.yml/badge.svg)](https://github.com/spaciousejar/devarch/actions/workflows/readme-claims.yml)
+
 **Developer Arch Linux** — A developer-focused Arch Linux distribution with Hyprland, pre-configured for web development, container workflows, and modern tooling.
+
+> [!WARNING]
+> **No ISO has been released yet.** The build pipeline exists and runs on tag, but
+> this repo has zero tags and zero releases, so the installation steps below
+> cannot be followed end to end. Do the standard Arch install, then add the
+> package repo. Tracked in [#1](https://github.com/spaciousejar/devarch/issues/1).
 
 ## Features
 
